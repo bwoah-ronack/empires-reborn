@@ -8,10 +8,8 @@ const player = {
     stockLevel: 0,
     intelligence: 0
 };
+
 const territories = [
-    { name: "Downtown", owner: "player" },
-    { name: "Harbor", owner: "rival" },
-    { name: "Industrist territories = [
     { name: "Downtown", owner: "player" },
     { name: "Harbor", owner: "rival" },
     { name: "Industrial Zone", owner: "neutral" },
@@ -19,6 +17,7 @@ const territories = [
     { name: "Financial District", owner: "rival" },
     { name: "West End", owner: "neutral" }
 ];
+
 const city = {
     corruption: 30,
     police: 40,
@@ -61,6 +60,7 @@ function renderMap() {
 
     document.getElementById("territoryMap").innerHTML = mapHTML;
 }
+
 function updateUI() {
 
     document.getElementById("stats").innerHTML = `
@@ -75,7 +75,8 @@ function updateUI() {
         <p>Stock Investments: ${player.stockLevel}</p>
         <p>Intelligence Network: ${player.intelligence}</p>
     `;
- renderMap();
+
+    renderMap();
 
     document.getElementById("cityInfo").innerHTML = `
         <p>Corruption Level: ${city.corruption}</p>
@@ -100,7 +101,8 @@ function buyBusiness() {
         log("Insufficient funds.");
         return;
     }
-         player.money -= 5000;
+
+    player.money -= 5000;
     player.businesses += 1;
     player.influence += 2;
     player.heat += 3;
@@ -109,6 +111,7 @@ function buyBusiness() {
 
     updateUI();
 }
+
 function bribePolice() {
 
     if (player.money < 3000) {
@@ -129,6 +132,23 @@ function bribePolice() {
 
     updateUI();
 }
+
+function launchPropaganda() {
+
+    if (player.money < 4000) {
+        log("Insufficient funds for propaganda campaign.");
+        return;
+    }
+
+    player.money -= 4000;
+    player.influence += 6;
+    city.unrest += 4;
+
+    log("Media propaganda campaign launched.");
+
+    updateUI();
+}
+
 function expandTerritory() {
 
     if (player.money < 10000) {
@@ -140,19 +160,20 @@ function expandTerritory() {
     player.territories += 1;
 
     // Capture neutral territory
-const neutralTerritory = territories.find(t => t.owner === "neutral");
+    const neutralTerritory = territories.find(t => t.owner === "neutral");
 
     if (neutralTerritory) {
         neutralTerritory.owner = "player";
         log(`You captured ${neutralTerritory.name}.`);
     }
-         player.influence += 10;
+    player.influence += 10;
     player.heat += 10;
 
     log("Your empire expanded into a new district.");
 
     updateUI();
 }
+
 function investStocks() {
 
     const investment = Math.floor(Math.random() * 10000);
@@ -171,6 +192,7 @@ function investStocks() {
 
     updateUI();
 }
+
 function viewIntel() {
 
     player.intelligence += 1;
@@ -183,19 +205,21 @@ function viewIntel() {
         "Citizens are becoming suspicious.",
         "A media company is secretly for sale."
     ];
-        const randomIntel = intel[Math.floor(Math.random() * intel.length)];
+
+    const randomIntel = intel[Math.floor(Math.random() * intel.length)];
 
     log(`INTEL REPORT: ${randomIntel}`);
 
     updateUI();
 }
+
 function randomEvent() {
 
     const roll = Math.random();
 
     if (roll < 0.15) {
         log("Police raid launched against your businesses.");
-              player.money -= 6000;
+        player.money -= 6000;
         player.heat += 15;
     }
 
@@ -204,7 +228,8 @@ function randomEvent() {
         player.money += 8000;
         city.economy += 5;
     }
-         else if (roll < 0.45) {
+
+    else if (roll < 0.45) {
         log("A rival organization attacked your territory.");
         player.influence -= 5;
     }
@@ -213,7 +238,8 @@ function randomEvent() {
         log("Citizens support your hidden operations.");
         player.influence += 4;
     }
-        else if (roll < 0.75) {
+
+    else if (roll < 0.75) {
         log("Corruption spreads deeper into the city.");
         city.corruption += 7;
     }
@@ -222,14 +248,16 @@ function randomEvent() {
         log("Quiet week. Your empire grows silently.");
     }
 }
+
 function passiveIncome() {
 
-    const income = (player.businesses * 5000) + (player.territories * 3000);
+    const income = (player.businesses * 2500) + (player.territories * 1500);
 
     player.money += income;
 
     log(`Your empire generated $${income} this turn.`);
 }
+
 function calculateScore() {
 
     let score = 0;
@@ -242,7 +270,7 @@ function calculateScore() {
     score += player.intelligence * 10;
     score += player.day * 2;
 
- // Penalties
+    // Penalties
     score -= player.heat * 2;
     score -= city.unrest;
 
@@ -253,7 +281,7 @@ function showScoreboard(reason) {
 
     const finalScore = calculateScore();
 
-  alert(
+    alert(
         `GAME OVER
 
 ` +
@@ -280,6 +308,7 @@ function showScoreboard(reason) {
 
     location.reload();
 }
+
 function checkGameOver() {
 
     if (player.money <= -20000) {
@@ -294,7 +323,8 @@ function checkGameOver() {
         showScoreboard("GLOBAL DOMINATION ACHIEVED. YOU WIN.");
     }
 }
-if (player.heat >= 100) {
+
+    if (player.heat >= 100) {
         alert("FEDERAL CRACKDOWN. You were arrested.");
         location.reload();
     }
@@ -311,7 +341,7 @@ function endTurn() {
 
     passiveIncome();
 
-  randomEvent();
+    randomEvent();
 
     player.heat += player.businesses;
 
@@ -323,8 +353,7 @@ function endTurn() {
         city.economy = 0;
     }
 
-        
-  updateUI();
+    updateUI();
 
     checkGameOver();
 }
@@ -333,3 +362,92 @@ updateUI();
 
 log("Welcome to Empire of Shadows.");
 log("Build your empire carefully. Power attracts enemies.");
+```
+
+---
+
+# HOW TO RUN
+
+1. Create a folder called:
+
+```txt
+EmpireGame
+```
+
+2. Create these files inside it:
+
+* index.html
+* style.css
+* script.js
+
+3. Paste the code into their respective files.
+
+4. Double click `index.html`
+
+The game will launch in your browser.
+
+---
+
+# FUTURE FEATURES YOU CAN ADD
+
+## MAP SYSTEM
+
+* Control different cities
+* Different economies
+* Territory wars
+
+## AI RIVALS
+
+* Rival empires
+* Assassinations
+* Economic sabotage
+
+## SAVE SYSTEM
+
+Use localStorage:
+
+```javascript
+localStorage.setItem("save", JSON.stringify(player));
+```
+
+## SOUND EFFECTS
+
+* Terminal typing sounds
+* Sirens
+* Radio chatter
+
+## ONLINE MULTIPLAYER
+
+Later you can use:
+
+* Node.js
+* Socket.io
+* Firebase
+
+## MOBILE VERSION
+
+Convert it into:
+
+* React app
+* Android APK
+* Steam indie game
+
+---
+
+# NEXT LEVEL IDEAS
+
+You could eventually add:
+
+* stock market manipulation
+* elections
+* cartels
+* private armies
+* hacking systems
+* AI NPC memory
+* diplomacy
+* news channels
+* crypto markets
+* prison escapes
+* blackmail systems
+
+This is how deep strategy simulators are built.
