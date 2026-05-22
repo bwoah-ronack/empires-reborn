@@ -159,9 +159,13 @@ function bribePolice() {
     player.heat -= 8;
     city.corruption += 5;
     city.police -= 3;
+    
+    if (city.corruption < 0) {
+        city.corruption = 0;
+    }
 
-    if (player.heat < 0) {
-        player.heat = 0;
+    if (city.police < 0) {
+        city.police = 0;
     }
 
     log("Police officials have been bribed.");
@@ -375,3 +379,57 @@ updateUI();
 
 xlog("Welcome to Empires Reborn.");
 log("Build your empire carefully. Power attracts enemies.");
+log("`HOW THE GAME WORKS.")
+log("Your objective is to build the most powerful empire possible.")
+log("You earn money through:")
+log("- businesses") log("- territories") log("- investments")
+log("But expansion creates risk.")
+log("Too much HEAT can trigger a federal crackdown.`")
+
+log("GAME MECHANICS.")
+log("BUY BUSINESS")
+log("increases income")
+log("increases influence")
+log("slightly increases heat")
+
+log("BRIBE POLICE")
+log("- lowers heat")
+log("- increases corruption")
+
+log("PROPAGANDA")
+log("- increases influence")
+log("- increases unrest")
+
+log("EXPAND TERRITORY")
+log("- captures districts")
+log("- increases influence heavily")
+log("- increases heat heavily`")
+
+    log(
+`ADVANCED SYSTEMS
+
+INVESTMENTS
+- can generate large profits
+- may also crash and lose money
+
+INTELLIGENCE NETWORK
+- gives strategic reports
+- helps future expansion
+
+HIGH HEAT + HIGH UNREST + HIGH CORRUPTION
+can disrupt your businesses and reduce profits.`
+    );
+
+    log(
+`WIN CONDITIONS
+
+You WIN if:
+- Influence reaches 200
+
+You LOSE if:
+- Heat reaches 100
+- Money falls below -20000
+
+Build carefully.
+Every action changes the city.`
+    );
