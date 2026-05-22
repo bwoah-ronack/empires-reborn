@@ -120,14 +120,28 @@ function expandTerritory() {
 
 function investStocks() {
 
-    const investment = Math.floor(Math.random() * 10000);
-    const outcome = Math.random();
+    const investment = Math.floor(Math.random() * 10000) + 1000;
 
-    if (outcome > 0.5) {
-        player.money += investment;
-        log(`Stock investment succeeded. Profit: $${investment}`);
-    } else {
+    // 66% success rate
+    const outcome = Math.floor(Math.random() * 3);
+
+    if (outcome !== 0) {
+
+        const profit = Math.floor(investment * 1.5);
+
+        player.money += profit;
+
+        player.influence += 1;
+
+        log(`Stock investment succeeded. Profit: $${profit}`);
+    }
+
+    else {
+
         player.money -= investment;
+
+        player.heat += 2;
+
         log(`Stock market crashed. Loss: $${investment}`);
     }
 
