@@ -1,3 +1,87 @@
+// =========================
+// INTRODUCTION + TUTORIAL
+// =========================
+
+let playerName = "";
+
+function startIntroduction() {
+
+    playerName = prompt("Enter your empire name or leader name:");
+
+    if (!playerName || playerName.trim() === "") {
+        playerName = "Commander";
+    }
+
+    alert(`Welcome ${playerName} to EMPIRES REBORN.`);
+
+    alert(
+`HOW THE GAME WORKS
+
+Your objective is to build the most powerful empire possible.
+
+You earn money through:
+- businesses
+- territories
+- investments
+
+But expansion creates risk.
+
+Too much HEAT can trigger a federal crackdown.`
+    );
+
+    alert(
+`GAME MECHANICS
+
+BUY BUSINESS
+- increases income
+- increases influence
+- slightly increases heat
+
+BRIBE POLICE
+- lowers heat
+- increases corruption
+
+PROPAGANDA
+- increases influence
+- increases unrest
+
+EXPAND TERRITORY
+- captures districts
+- increases influence heavily
+- increases heat heavily`
+    );
+
+    alert(
+`ADVANCED SYSTEMS
+
+INVESTMENTS
+- can generate large profits
+- may also crash and lose money
+
+INTELLIGENCE NETWORK
+- gives strategic reports
+- helps future expansion
+
+HIGH HEAT + HIGH UNREST + HIGH CORRUPTION
+can disrupt your businesses and reduce profits.`
+    );
+
+    alert(
+`WIN CONDITIONS
+
+You WIN if:
+- Influence reaches 200
+
+You LOSE if:
+- Heat reaches 100
+- Money falls below -20000
+
+Build carefully.
+Every action changes the city.`
+    );
+
+    log(`SUPREME COMMANDER ${playerName} has entered the city.`);
+}
 const player = {
     money: 20000,
     influence: 10,
@@ -253,12 +337,12 @@ function checkGameOver() {
         location.reload();
     }
 
-    if (player.heat >= 100) {
+    if (player.heat >= 500) {
         alert("FEDERAL CRACKDOWN. You were arrested.");
         location.reload();
     }
 
-    if (player.influence >= 200) {
+    if (player.influence >= 500) {
         alert("GLOBAL DOMINATION ACHIEVED. YOU WIN.");
         location.reload();
     }
@@ -289,96 +373,5 @@ function endTurn() {
 
 updateUI();
 
-// =========================
-// INTRODUCTION + TUTORIAL
-// =========================
-
-let playerName = "";
-
-function startIntroduction() {
-
-    playerName = prompt("Enter your empire name or leader name:");
-
-    if (!playerName || playerName.trim() === "") {
-        playerName = "Commander";
-    }
-    
-    updateUI();
-
-startIntroduction();
-
-log(`Welcome ${playerName} to Empires Reborn.`);
-log("Build your empire carefully. Power attracts enemies.");
-
-    alert(`Welcome ${playerName} to EMPIRES REBORN.`);
-
-    alert(
-`HOW THE GAME WORKS
-
-Your objective is to build the most powerful empire possible.
-
-You earn money through:
-- businesses
-- territories
-- investments
-
-But expansion creates risk.
-
-Too much HEAT can trigger a federal crackdown.`
-    );
-
-    alert(
-`GAME MECHANICS
-
-BUY BUSINESS
-- increases income
-- increases influence
-- slightly increases heat
-
-BRIBE POLICE
-- lowers heat
-- increases corruption
-
-PROPAGANDA
-- increases influence
-- increases unrest
-
-EXPAND TERRITORY
-- captures districts
-- increases influence heavily
-- increases heat heavily`
-    );
-
-    alert(
-`ADVANCED SYSTEMS
-
-INVESTMENTS
-- can generate large profits
-- may also crash and lose money
-
-INTELLIGENCE NETWORK
-- gives strategic reports
-- helps future expansion
-
-HIGH HEAT + HIGH UNREST + HIGH CORRUPTION
-can disrupt your businesses and reduce profits.`
-    );
-
-    alert(
-`WIN CONDITIONS
-
-You WIN if:
-- Influence reaches 200
-
-You LOSE if:
-- Heat reaches 100
-- Money falls below -20000
-
-Build carefully.
-Every action changes the city.`
-    );
-
-    log(`SUPREME COMMANDER ${playerName} has entered the city.`);
-}
-log("Welcome to Empires Reborn.");
+xlog("Welcome to Empires Reborn.");
 log("Build your empire carefully. Power attracts enemies.");
