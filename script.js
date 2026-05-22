@@ -101,6 +101,37 @@ function launchPropaganda() {
     updateUI();
 }
 
+function publicWelfare() {
+
+    if (player.money < 6000) {
+
+        log("Insufficient funds for welfare program.");
+
+        return;
+    }
+
+    player.money -= 6000;
+
+    player.influence += 8;
+
+    player.heat -= 10;
+
+    city.unrest -= 12;
+
+    // Prevent negative values
+    if (player.heat < 0) {
+        player.heat = 0;
+    }
+
+    if (city.unrest < 0) {
+        city.unrest = 0;
+    }
+
+    log("Public welfare programs improved your reputation and stabilized the city.");
+
+    updateUI();
+}
+
 function expandTerritory() {
 
     if (player.money < 10000) {
