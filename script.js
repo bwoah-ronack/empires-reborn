@@ -9,15 +9,6 @@ const player = {
     intelligence: 0
 };
 
-const territories = [
-    { name: "Downtown", owner: "player" },
-    { name: "Harbor", owner: "rival" },
-    { name: "Industrial Zone", owner: "neutral" },
-    { name: "Old City", owner: "player" },
-    { name: "Financial District", owner: "rival" },
-    { name: "West End", owner: "neutral" }
-];
-
 const city = {
     corruption: 30,
     police: 40,
@@ -25,47 +16,10 @@ const city = {
     unrest: 10
 };
 
-function renderMap() {
-
-    let mapHTML = "";
-
-    territories.forEach(area => {
-
-        let color = "white";
-
-        if (area.owner === "player") {
-            color = "#00ff66";
-        }
-
-        else if (area.owner === "rival") {
-            color = "red";
-        }
-
-        else {
-            color = "gray";
-        }
-
-        mapHTML += `
-            <div style="
-                border:1px solid ${color};
-                color:${color};
-                padding:10px;
-                margin:5px;
-            ">
-                ${area.name}<br>
-                Owner: ${area.owner.toUpperCase()}
-            </div>
-        `;
-    });
-
-    document.getElementById("territoryMap").innerHTML = mapHTML;
-}
-
 function updateUI() {
 
     document.getElementById("stats").innerHTML = `
         <h2>Empire Status</h2>
-        <p><strong>Current Day:</strong> ${player.day}</p>
         <p>Day: ${player.day}</p>
         <p>Money: $${player.money}</p>
         <p>Influence: ${player.influence}</p>
@@ -75,8 +29,6 @@ function updateUI() {
         <p>Stock Investments: ${player.stockLevel}</p>
         <p>Intelligence Network: ${player.intelligence}</p>
     `;
-
-    renderMap();
 
     document.getElementById("cityInfo").innerHTML = `
         <p>Corruption Level: ${city.corruption}</p>
@@ -158,14 +110,6 @@ function expandTerritory() {
 
     player.money -= 10000;
     player.territories += 1;
-
-    // Capture neutral territory
-    const neutralTerritory = territories.find(t => t.owner === "neutral");
-
-    if (neutralTerritory) {
-        neutralTerritory.owner = "player";
-        log(`You captured ${neutralTerritory.name}.`);
-    }
     player.influence += 10;
     player.heat += 10;
 
@@ -182,8 +126,7 @@ function investStocks() {
     if (outcome > 0.5) {
         player.money += investment;
         log(`Stock investment succeeded. Profit: $${investment}`);
-    }
-    else {
+    } else {
         player.money -= investment;
         log(`Stock market crashed. Loss: $${investment}`);
     }
@@ -258,71 +201,12 @@ function passiveIncome() {
     log(`Your empire generated $${income} this turn.`);
 }
 
-function calculateScore() {
-
-    let score = 0;
-
-    score += player.money / 1000;
-    score += player.influence * 5;
-    score += player.businesses * 15;
-    score += player.territories * 25;
-    score += player.stockLevel * 5;
-    score += player.intelligence * 10;
-    score += player.day * 2;
-
-    // Penalties
-    score -= player.heat * 2;
-    score -= city.unrest;
-
-    return Math.floor(score);
-}
-
-function showScoreboard(reason) {
-
-    const finalScore = calculateScore();
-
-    alert(
-        `GAME OVER
-
-` +
-        `${reason}
-
-` +
-        `FINAL SCORE: ${finalScore}
-
-` +
-        `Days Survived: ${player.day}
-` +
-        `Money: $${player.money}
-` +
-        `Influence: ${player.influence}
-` +
-        `Businesses Owned: ${player.businesses}
-` +
-        `Territories Controlled: ${player.territories}
-` +
-        `Stock Investments: ${player.stockLevel}
-` +
-        `Intelligence Network: ${player.intelligence}`
-    );
-
-    location.reload();
-}
-
 function checkGameOver() {
 
     if (player.money <= -20000) {
-        showScoreboard("BANKRUPTCY. Your empire collapsed.");
+        alert("BANKRUPTCY. Your empire collapsed.");
+        location.reload();
     }
-
-    if (player.heat >= 100) {
-        showScoreboard("FEDERAL CRACKDOWN. You were arrested.");
-    }
-
-    if (player.influence >= 200) {
-        showScoreboard("GLOBAL DOMINATION ACHIEVED. YOU WIN.");
-    }
-}
 
     if (player.heat >= 100) {
         alert("FEDERAL CRACKDOWN. You were arrested.");
@@ -360,94 +244,5 @@ function endTurn() {
 
 updateUI();
 
-log("Welcome to Empire of Shadows.");
+log("Welcome to Empires Reborn.");
 log("Build your empire carefully. Power attracts enemies.");
-```
-
----
-
-# HOW TO RUN
-
-1. Create a folder called:
-
-```txt
-EmpireGame
-```
-
-2. Create these files inside it:
-
-* index.html
-* style.css
-* script.js
-
-3. Paste the code into their respective files.
-
-4. Double click `index.html`
-
-The game will launch in your browser.
-
----
-
-# FUTURE FEATURES YOU CAN ADD
-
-## MAP SYSTEM
-
-* Control different cities
-* Different economies
-* Territory wars
-
-## AI RIVALS
-
-* Rival empires
-* Assassinations
-* Economic sabotage
-
-## SAVE SYSTEM
-
-Use localStorage:
-
-```javascript
-localStorage.setItem("save", JSON.stringify(player));
-```
-
-## SOUND EFFECTS
-
-* Terminal typing sounds
-* Sirens
-* Radio chatter
-
-## ONLINE MULTIPLAYER
-
-Later you can use:
-
-* Node.js
-* Socket.io
-* Firebase
-
-## MOBILE VERSION
-
-Convert it into:
-
-* React app
-* Android APK
-* Steam indie game
-
----
-
-# NEXT LEVEL IDEAS
-
-You could eventually add:
-
-* stock market manipulation
-* elections
-* cartels
-* private armies
-* hacking systems
-* AI NPC memory
-* diplomacy
-* news channels
-* crypto markets
-* prison escapes
-* blackmail systems
-
-This is how deep strategy simulators are built.
