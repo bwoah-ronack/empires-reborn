@@ -249,10 +249,7 @@ log("Build your empire carefully. Power attracts enemies.");
 // =========================
 // INTRODUCTION + TUTORIAL
 // =========================
-
-let playerName = "";
-
-function startIntroduction()
+updateUI();
 log("========== GAME GUIDE ==========");
 log("GAME MECHANICS");
 log("BUY BUSINESS");
