@@ -203,17 +203,17 @@ function passiveIncome() {
 
 function checkGameOver() {
 
-    if (player.money <= -20000) {
+    if (player.money <= -30000) {
         alert("BANKRUPTCY. Your empire collapsed.");
         location.reload();
     }
 
-    if (player.heat >= 100) {
+    if (player.heat >= 200) {
         alert("FEDERAL CRACKDOWN. You were arrested.");
         location.reload();
     }
 
-    if (player.influence >= 200) {
+    if (player.influence >= 500) {
         alert("GLOBAL DOMINATION ACHIEVED. YOU WIN.");
         location.reload();
     }
@@ -302,7 +302,7 @@ log("- Influence reaches 500");
 
 log("YOU LOSE IF:");
 log("- Heat reaches 200");
-log("- Money falls below -20000");
+log("- Money falls below -30000");
 
 log("Every action changes the city.");
 log("=====================================");
