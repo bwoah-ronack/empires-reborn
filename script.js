@@ -37,7 +37,7 @@ function updateUI() {
         <p>Public Unrest: ${city.unrest}</p>
     `;
 }
-
+//heheheheheheheheheheheheehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehe//
 function log(message) {
 
     const logBox = document.getElementById("log");
