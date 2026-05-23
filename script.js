@@ -254,57 +254,41 @@ let playerName = "";
 
 function startIntroduction()
 log("========== GAME GUIDE ==========");
-
 log("GAME MECHANICS");
-
 log("BUY BUSINESS");
 log("- increases income");
 log("- increases influence");
 log("- slightly increases heat");
-
 log("BRIBE POLICE");
 log("- lowers heat");
 log("- increases corruption");
-
 log("PROPAGANDA");
 log("- increases influence");
 log("- increases unrest");
-
 log("EXPAND TERRITORY");
 log("- captures districts");
 log("- increases influence heavily");
 log("- increases heat heavily");
-
 log("PUBLIC WELFARE");
 log("- reduces heat");
 log("- reduces unrest");
 log("- increases influence");
-
 log("========== ADVANCED SYSTEMS ==========");
-
 log("INVESTMENTS");
 log("- 2 out of 3 chance for profit");
 log("- can generate massive returns");
 log("- failed investments increase heat");
-
 log("INTELLIGENCE NETWORK");
 log("- provides strategic reports");
 log("- helps future expansion");
-
 log("HIGH HEAT + HIGH UNREST + HIGH CORRUPTION");
 log("- can disrupt businesses");
 log("- can reduce empire profits");
-
 log("========== WIN CONDITIONS ==========");
-
 log("YOU WIN IF:");
 log("- Influence reaches 500");
-
 log("YOU LOSE IF:");
 log("- Heat reaches 200");
 log("- Money falls below -30000");
-
 log("Every action changes the city.");
 log("=====================================");
-
-   
