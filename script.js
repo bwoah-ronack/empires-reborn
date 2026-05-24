@@ -208,12 +208,12 @@ function checkGameOver() {
         location.reload();
     }
 
-    if (player.heat >= 100) {
+    if (player.heat >= 200) {
         alert("FEDERAL CRACKDOWN. You were arrested.");
         location.reload();
     }
 
-    if (player.influence >= 200) {
+    if (player.influence >= 500) {
         alert("GLOBAL DOMINATION ACHIEVED. YOU WIN.");
         location.reload();
     }
