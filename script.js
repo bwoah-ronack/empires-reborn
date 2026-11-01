@@ -246,3 +246,13 @@ updateUI();
 
 log("Welcome to Empires Reborn.");
 log("Build your empire carefully. Power attracts enemies.");
+function showHowToPlay() {
+    log("📖 HOW TO PLAY — EMPIRES REBORN");
+    log("1. 🏢 BUILD YOUR EMPIRE: Acquire businesses to establish your economic foundation. Cost: $5,000.");
+    log("2. 🌆 EXPAND TERRITORY: Acquire additional territory to grow your influence. Cost: $10,000.");
+    log("3. 📢 PUBLIC INFLUENCE: Launch propaganda campaigns to influence public opinion. Cost: $4,000.");
+    log("4. 📈 STOCK MARKET: Invest strategically and monitor your financial performance.");
+    log("5. 🔍 INTELLIGENCE: Gather information before making important strategic decisions.");
+    log("6. ⚙️ RESOURCE MANAGEMENT: Monitor finances and review your decisions before ending each turn.");
+}
+
